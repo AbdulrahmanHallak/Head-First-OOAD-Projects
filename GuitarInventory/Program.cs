@@ -6,14 +6,16 @@
         {
             var inventory = new Inventory();
             inventory.AddGuitar("V95693", "Stratocastor", Builder.FENDER, 1499.95,
-                               Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
-            inventory.AddGuitar("V9512", "Stratocastor", Builder.FENDER, 1549.95,
-                            Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+                                Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
 
-            var whatErinLikes = new Guitar("", "Stratocastor", Builder.FENDER
-                , 0, Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+            inventory.AddGuitar("V9512", "Stratocastor", Builder.FENDER, 1549.95,
+                                 Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+
+            var whatErinLikes = new Guitar("", "Stratocastor", Builder.FENDER,0, 
+                                           Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
             
             var matchingGuitars = inventory.search(whatErinLikes);
+
             if (matchingGuitars != null)
             {
                 foreach(var guitar in matchingGuitars)

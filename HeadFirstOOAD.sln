@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Appendix2", "Appendix2\Appendix2.csproj", "{9E54AA71-A5A2-4A14-9AD7-F4D94BC43998}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarInventory", "GuitarInventory\GuitarInventory.csproj", "{170381F2-6FBE-49F6-9D44-0706A3958928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarInventory", "GuitarInventory\GuitarInventory.csproj", "{170381F2-6FBE-49F6-9D44-0706A3958928}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9E54AA71-A5A2-4A14-9AD7-F4D94BC43998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E54AA71-A5A2-4A14-9AD7-F4D94BC43998}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E54AA71-A5A2-4A14-9AD7-F4D94BC43998}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E54AA71-A5A2-4A14-9AD7-F4D94BC43998}.Release|Any CPU.Build.0 = Release|Any CPU
 		{170381F2-6FBE-49F6-9D44-0706A3958928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{170381F2-6FBE-49F6-9D44-0706A3958928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{170381F2-6FBE-49F6-9D44-0706A3958928}.Release|Any CPU.ActiveCfg = Release|Any CPU
