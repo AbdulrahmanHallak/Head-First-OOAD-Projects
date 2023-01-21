@@ -9,23 +9,17 @@ namespace GuitarInventory
     internal class Guitar
     {
         public string SerialNumber { get; set; }
-        public string Model { get; set; }
-        public Builder Builder { get; set; }
         public double Price { get; set; }
-        public Type Type { get; set; }
-        public Wood BackWood { get; set; }
-        public Wood TopWood { get; set; }
-
+        public GuitarSpec Spec { get; set; }
+     
         public Guitar(string serialNumber, string model, Builder builder,
-            double price, Type type, Wood backWood, Wood topWood)
+            double price, GuitarType type, Wood backWood, Wood topWood)
         {
+            var guitarSpec = new GuitarSpec(model, builder, type, backWood, topWood);
+            Spec = guitarSpec;
             SerialNumber = serialNumber;
-            Model = model;
-            Builder = builder;
             Price = price;
-            Type = type;
-            BackWood = backWood;
-            TopWood = topWood;
+            
         }
     }
 }
