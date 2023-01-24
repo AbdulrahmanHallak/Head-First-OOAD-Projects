@@ -12,14 +12,11 @@ namespace GuitarInventory
         public double Price { get; set; }
         public GuitarSpec Spec { get; set; }
      
-        public Guitar(string serialNumber, string model, Builder builder,
-            double price, GuitarType type, Wood backWood, Wood topWood)
+        public Guitar(string serialNumber,double price, GuitarSpec spec)
         {
-            var guitarSpec = new GuitarSpec(model, builder, type, backWood, topWood);
-            Spec = guitarSpec;
+            Spec= spec;
             SerialNumber = serialNumber;
             Price = price;
-            
         }
     }
 }
