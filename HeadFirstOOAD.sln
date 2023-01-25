@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarInventory", "GuitarInventory\GuitarInventory.csproj", "{170381F2-6FBE-49F6-9D44-0706A3958928}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogDoor", "DogDoor\DogDoor.csproj", "{9B6FBE02-C612-4804-B0B4-7F451561F1C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{170381F2-6FBE-49F6-9D44-0706A3958928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{170381F2-6FBE-49F6-9D44-0706A3958928}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{170381F2-6FBE-49F6-9D44-0706A3958928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B6FBE02-C612-4804-B0B4-7F451561F1C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B6FBE02-C612-4804-B0B4-7F451561F1C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B6FBE02-C612-4804-B0B4-7F451561F1C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B6FBE02-C612-4804-B0B4-7F451561F1C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

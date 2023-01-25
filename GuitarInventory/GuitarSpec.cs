@@ -48,6 +48,8 @@ namespace GuitarInventory
         }
         public bool Compare(GuitarSpec searchGuitar)
         {
+            //ignore price because that is unique
+            //ignore serial number because that is unique
             var builder = searchGuitar.Builder;
             if (!builder.Equals(Builder))
                 return false;
