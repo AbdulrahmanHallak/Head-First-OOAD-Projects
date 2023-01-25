@@ -18,7 +18,7 @@ namespace DogDoor
         }
         public void PressButton()
         {
-            Console.WriteLine("Pressing the romte control button");
+            Console.WriteLine("Pressing the remote control button");
             if (_door.isOpen())
             {
                 _door.Close();

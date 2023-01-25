@@ -9,11 +9,20 @@
             Console.WriteLine("Fido barks to go outside");
             remote.PressButton();
             Console.WriteLine("Fido has gone outside");
-            Console.Read();
-            Console.WriteLine("Fido is all doen");
+            try
+            {
+                Thread.Sleep(5000) ;
+            }
+            catch (ThreadInterruptedException e)
+            {
+                throw;
+            }
+            Console.WriteLine("Fido is all done");
+            Console.Write("but the door is closed");
+            Console.WriteLine(" andfido is stuck outside");
+            Console.WriteLine("so he starts barking");
+            Console.WriteLine("gina grabs the remote");
             remote.PressButton();
-            Console.WriteLine("fido is back inside");
-            Console.Read();
             Console.Read();
         }
     }
