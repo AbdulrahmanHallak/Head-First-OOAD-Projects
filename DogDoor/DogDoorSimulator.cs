@@ -9,11 +9,12 @@
             Console.WriteLine("Fido barks to go outside");
             remote.PressButton();
             Console.WriteLine("Fido has gone outside");
-            remote.PressButton();
+            Console.Read();
             Console.WriteLine("Fido is all doen");
             remote.PressButton();
             Console.WriteLine("fido is back inside");
-            remote.PressButton();
+            Console.Read();
+            Console.Read();
         }
     }
 }
