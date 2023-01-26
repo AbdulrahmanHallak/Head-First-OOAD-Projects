@@ -9,11 +9,12 @@ namespace DogDoor
 {
     internal class Door
     {
-        private static System.Timers.Timer timer = new System.Timers.Timer(3000);
+        private static System.Timers.Timer timer;
         private bool _open;
         public Door()
         {
             this._open = false;
+            timer = new System.Timers.Timer(3000);
         }
         public void Open()
         {
@@ -33,7 +34,11 @@ namespace DogDoor
         }
         private void Autoclose(object? sender, ElapsedEventArgs e)
         {
-            if (isOpen()) Close();  
+            if (isOpen()) Close(); 
+        }
+        public void SetTimer(int seconds)
+        {
+            timer.Interval = seconds * 1000;
         }
     }
 }
