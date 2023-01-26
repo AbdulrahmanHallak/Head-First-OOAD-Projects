@@ -10,7 +10,6 @@ namespace DogDoor
 {
     internal class Remote
     {
-        private static System.Timers.Timer timer = new System.Timers.Timer(3000);
         private Door _door;
         public Remote(Door door)
         {
@@ -23,12 +22,9 @@ namespace DogDoor
             {
                 _door.Close();
             }
-            else { _door.Open(); timer.Elapsed += Autoclose; timer.Enabled = true; }
+            else _door.Open();
         }
 
-        private void Autoclose(object? sender, ElapsedEventArgs e)
-        {
-            if(_door.isOpen()) { _door.Close(); timer.Stop(); }
-        }
+      
     }
 }
