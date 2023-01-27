@@ -9,12 +9,14 @@ namespace DogDoor
 {
     internal class Door
     {
+        private List<Bark> _allowedBarks;
         private static System.Timers.Timer timer;
         private bool _open;
         public Door()
         {
             this._open = false;
             timer = new System.Timers.Timer(3000);
+            _allowedBarks= new List<Bark>();
         }
         public void Open()
         {
@@ -39,6 +41,15 @@ namespace DogDoor
         public void SetTimer(int seconds)
         {
             timer.Interval = seconds * 1000;
+        }
+
+        public List<Bark> GetAllowedBarks()
+        {
+            return _allowedBarks;
+        }
+        public void AddAllowedBarks(Bark bark)
+        {
+            _allowedBarks.Add(bark);
         }
     }
 }
