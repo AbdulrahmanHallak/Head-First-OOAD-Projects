@@ -12,11 +12,6 @@ namespace GuitarInventory
     }
     internal class MandolinSpec : InstrumentSpec
     {
-        public Type Type { get; set; }
-        public Wood BackWood { get; set; }
-        public Wood TopWood { get; set; }
-        public string Model { get; set; }
-        public Builder Builder { get; set; }
         public Style Style { get; set; }
 
         public MandolinSpec(Type type, Wood backWood, Wood topWood, string model, Builder builder, Style style) : base(type , backWood , topWood , builder , model)

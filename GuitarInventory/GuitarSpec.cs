@@ -24,11 +24,6 @@ namespace GuitarInventory
 
     internal class GuitarSpec : InstrumentSpec
     {
-        public Type Type { get; set; }
-        public Wood BackWood { get; set; }
-        public Wood TopWood { get; set; } 
-        public string Model { get; set; }
-        public Builder Builder { get; set; }
         public int NumStrings { get; set; }
 
         public GuitarSpec(string model , Builder builder, Type type, Wood backWood, Wood topWood, int numStrings) : base(type ,backWood ,topWood , builder , model )
