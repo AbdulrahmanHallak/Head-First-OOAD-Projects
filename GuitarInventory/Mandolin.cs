@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace GuitarInventory
 {
-    internal class Guitar : Instrument
+    internal class Mandolin : Instrument
     {
-        public Guitar(string serialNumber, double price, GuitarSpec spec) : base(serialNumber ,price , spec)
+        public Mandolin(string serialNumber , double price , MandolinSpec spec) : base(serialNumber , price , spec)
         {
             this.SerialNumber = serialNumber;
-            this.Price = price; 
+            this.Price = price;
             this.Spec = spec;
         }
     }

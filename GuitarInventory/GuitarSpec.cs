@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuitarInventory
 {
-    public enum GuitarType
+    public enum Type
     {
         Acoustic,
         Electric
@@ -22,16 +22,16 @@ namespace GuitarInventory
     }
 
 
-    internal class GuitarSpec
+    internal class GuitarSpec : InstrumentSpec
     {
-        public GuitarType Type { get; set; }
+        public Type Type { get; set; }
         public Wood BackWood { get; set; }
         public Wood TopWood { get; set; } 
         public string Model { get; set; }
         public Builder Builder { get; set; }
         public int NumStrings { get; set; }
 
-        public GuitarSpec(string model , Builder builder, GuitarType type, Wood backWood, Wood topWood, int numStrings)
+        public GuitarSpec(string model , Builder builder, Type type, Wood backWood, Wood topWood, int numStrings) : base(type ,backWood ,topWood , builder , model )
 
         {
             this.Model = model;
@@ -39,42 +39,18 @@ namespace GuitarInventory
             this.TopWood = topWood;
             this.Builder = builder;
             this.Type = type;
-            this.Builder = builder;
             NumStrings = numStrings;
         }
-        public GuitarSpec()
+        public override bool Compare(InstrumentSpec searchInstrument)
         {
-
-        }
-        public bool Compare(GuitarSpec searchGuitar)
-        {
-            //ignore price because that is unique
-            //ignore serial number because that is unique
-            var builder = searchGuitar.Builder;
-            if (!builder.Equals(Builder))
+            if(!base.Compare(searchInstrument))
                 return false;
 
-            var numStrings = searchGuitar.NumStrings;
-            if(numStrings != 0 && numStrings != this.NumStrings)
+            GuitarSpec spec = (GuitarSpec)searchInstrument;
+            if(NumStrings != spec.NumStrings )
                 return false;
 
-            var model = searchGuitar.Model.ToLower();
-            if ((model != null) && !model.Equals("") && (!model.Equals(Model.ToLower())))
-                    return false;
-
-            var type = searchGuitar.Type;
-            if (!type.Equals(Type))
-                    return false;
-
-            var backWood = searchGuitar.BackWood;
-            if (!backWood.Equals(BackWood))
-                    return false;
-
-            var topWood = searchGuitar.TopWood;
-            if (!topWood.Equals(TopWood))
-                    return false;
-
-                return true;
+            return true;
         }
     }
 }

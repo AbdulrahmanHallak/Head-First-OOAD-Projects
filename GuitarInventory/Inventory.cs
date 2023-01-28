@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,38 +9,56 @@ namespace GuitarInventory
 {
     internal class Inventory
     {
-        private List<Guitar> _guitarList;
+        private List<Instrument> _inventory;
 
         public Inventory()
         {
-            this._guitarList = new List<Guitar>();
+            this._inventory = new List<Instrument>();
         }
 
-        public void AddGuitar(string serialNumber,double price , GuitarSpec specs)
+        public void AddInstrument(string serialNumber,double price , InstrumentSpec specs)
         {
-            var guitar = new Guitar(serialNumber, price, specs);
-            _guitarList.Add(guitar);
-        }
-        public Guitar GetGuitar(string serialNumber)
-        {
-            for (int i = 0; i < _guitarList.Count; i++)
+            if(specs.GetType() == typeof(GuitarSpec))
             {
-                if (_guitarList[i].SerialNumber.Equals(serialNumber))
-                    return _guitarList[i];
-
+                var guitar = new Guitar(serialNumber, price, (GuitarSpec)specs);
+                _inventory.Add(guitar);
+            }
+            else
+            {
+                var mandolin = new Mandolin(serialNumber, price, (MandolinSpec)specs);
+                _inventory.Add(mandolin);
+            }
+        }
+        public Instrument GetInstrument(string serialNumber)
+        {
+            foreach(var instrument in _inventory)
+            {
+                if(instrument.SerialNumber.Equals(serialNumber))
+                    return instrument;
             }
             return null;
         }
 
-        public LinkedList<Guitar> Search(GuitarSpec searchGuitar)
+        public List<Guitar> SearchGuitar(GuitarSpec searchGuitar)
         {
-            var matchingGuitars = new LinkedList<Guitar>();
-            foreach(var guitar in _guitarList)
+            var matchingGuitars = new List<Guitar>();
+            foreach (var guitar in _inventory)
             {
-                if(guitar.Spec.Compare(searchGuitar))
-                    matchingGuitars.AddLast(guitar) ;
+                if (guitar.Spec.Compare(searchGuitar))
+                    matchingGuitars.Add((Guitar)guitar);
             }
             return matchingGuitars;
         }
+        public List<Mandolin> SearchMandolin(MandolinSpec searchMandolin)
+        {
+            var matchingMandolin = new List<Mandolin>();
+            foreach (var mandolin in _inventory)
+            {
+                if (mandolin.Spec.Compare(searchMandolin))
+                    matchingMandolin.Add((Mandolin)mandolin);
+            }
+            return matchingMandolin;
+        }
+
     }
 }

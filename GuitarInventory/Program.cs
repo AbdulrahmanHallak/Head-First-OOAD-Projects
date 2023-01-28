@@ -5,18 +5,15 @@
         static void Main(string[] args)
         {
             var inventory = new Inventory();
-            inventory.AddGuitar("V95693", 1499.95, new GuitarSpec {Builder= Builder.Fender ,Type= GuitarType.Electric ,
-                                                        BackWood = Wood.Alder , TopWood = Wood.Alder , Model = "Stratocastor" , NumStrings = 6});
+            inventory.AddInstrument("V95693", 1499.95, new GuitarSpec("Stratocastor" , Builder.Fender , Type.Electric , Wood.Alder , Wood.Alder , 6));
 
-            inventory.AddGuitar("V9512",1596.95, new GuitarSpec {Builder = Builder.Collings, Type = GuitarType.Electric, BackWood = Wood.Alder,
-                                        TopWood = Wood.Alder,  Model = "Stratocastor", NumStrings = 12 });
+            inventory.AddInstrument("V9512",1596.95, new MandolinSpec(Type.Acoustic , Wood.Alder , Wood.Alder , "Stratocastor" , Builder.Fender , Style.A));
 
-            var whatErinLikes = new GuitarSpec("Stratocastor", Builder.Collings,
-                                           GuitarType.Electric, Wood.Alder, Wood.Alder , 12);
+            var whatErinLikes = new GuitarSpec("Stratocastor", Builder.Fender, Type.Electric, Wood.Alder, Wood.Alder, 4);
             
-            var matchingGuitars = inventory.Search(whatErinLikes);
+            var matchingGuitars = inventory.SearchGuitar(whatErinLikes);
             
-            if (matchingGuitars.Any())
+            if (matchingGuitars.Count != 0)
             {
                 foreach(var guitar in matchingGuitars)
                 {
