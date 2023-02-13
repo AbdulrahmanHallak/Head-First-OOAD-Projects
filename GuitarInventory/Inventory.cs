@@ -18,16 +18,8 @@ namespace GuitarInventory
 
         public void AddInstrument(string serialNumber,double price , InstrumentSpec specs)
         {
-            if(specs.GetType() == typeof(GuitarSpec))
-            {
-                var guitar = new Guitar(serialNumber, price, (GuitarSpec)specs);
-                _inventory.Add(guitar);
-            }
-            else
-            {
-                var mandolin = new Mandolin(serialNumber, price, (MandolinSpec)specs);
-                _inventory.Add(mandolin);
-            }
+           var instrument = new Instrument(serialNumber, price, specs);
+            this._inventory.Add(instrument);
         }
         public Instrument GetInstrument(string serialNumber)
         {
@@ -39,26 +31,15 @@ namespace GuitarInventory
             return null;
         }
 
-        public List<Guitar> SearchGuitar(GuitarSpec searchGuitar)
+        public List<Instrument> Search(InstrumentSpec searchSpec)
         {
-            var matchingGuitars = new List<Guitar>();
-            foreach (var guitar in _inventory)
+            var matchingInstruments = new List<Instrument>();
+            foreach (var instrument in _inventory)
             {
-                if (guitar.Spec.Compare(searchGuitar))
-                    matchingGuitars.Add((Guitar)guitar);
+                if (instrument.Spec.Compare(searchSpec))
+                    matchingInstruments.Add(instrument);
             }
-            return matchingGuitars;
+            return matchingInstruments;
         }
-        public List<Mandolin> SearchMandolin(MandolinSpec searchMandolin)
-        {
-            var matchingMandolin = new List<Mandolin>();
-            foreach (var mandolin in _inventory)
-            {
-                if (mandolin.Spec.Compare(searchMandolin))
-                    matchingMandolin.Add((Mandolin)mandolin);
-            }
-            return matchingMandolin;
-        }
-
     }
 }

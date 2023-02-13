@@ -1,33 +1,77 @@
-﻿namespace GuitarInventory
+﻿using System.Text;
+
+namespace GuitarInventory
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            var invetory = new Inventory();
+            //InventoryInitializer.InitializeInventory(invetory);
+            TestInstrumentSearch();
+        }
+        //A method to test the search method with hard-coded values
+        public static void TestInstrumentSearch()
+        {
+            // Set up Rick's instrument inventory
             var inventory = new Inventory();
-            inventory.AddInstrument("V95693", 1499.95, new GuitarSpec("Stratocastor" , Builder.Fender , Type.Electric , Wood.Alder , Wood.Alder , 6));
+            InventoryInitializer.InitializeInventory(inventory);
 
-            inventory.AddInstrument("V9512",1596.95, new MandolinSpec(Type.Acoustic , Wood.Alder , Wood.Alder , "Stratocastor" , Builder.Fender , Style.A));
-
-            var whatErinLikes = new GuitarSpec("Stratocastor", Builder.Fender, Type.Electric, Wood.Alder, Wood.Alder, 4);
-            
-            var matchingGuitars = inventory.SearchGuitar(whatErinLikes);
-            
-            if (matchingGuitars.Count != 0)
+            var guitarSpec = new Dictionary<string, System.Enum>
             {
-                foreach(var guitar in matchingGuitars)
+                { "instrumentType", InstrumentType.Guitar },
+                { "builder", Builder.Fender},
+                { "type", Type.Electric},
+                { "topWood", Wood.Alder},
+                { "backWood", Wood.ADERONDACK},
+                { "numStrings", NumberOfStrings.six}
+            };
+            var whatErinLikes = new InstrumentSpec(guitarSpec);
+            FindInstrument("Erin", whatErinLikes, inventory);
+
+
+            var mandolinSpec = new Dictionary<string, System.Enum>
+            {
+                { "instrumentType", InstrumentType.Mandolin },
+                { "builder", Builder.Fender},
+                { "type", Type.Acoustic},
+                { "topWood", Wood.Alder},
+                { "backWood", Wood.Alder},
+                { "style", Style.A}
+             };
+            var whatPhilLikes = new InstrumentSpec(mandolinSpec);
+            FindInstrument("Phil", whatPhilLikes, inventory);
+
+            var multiInstrumentSpec = new Dictionary<string, System.Enum>
+            {
+                { "builder", Builder.Gibson},
+                { "backWood", Wood.Maple},
+            };
+            var whatSallyLikes = new InstrumentSpec(multiInstrumentSpec);
+            FindInstrument("Sally", whatSallyLikes, inventory);
+        }
+        //A method that class the search method to test and print out the result.
+        //Note: Too lazy to make a specific method for printing out the resutl.
+        private static void FindInstrument(string name, InstrumentSpec instrumentSpec, Inventory inventory)
+        {
+            if (inventory == null) Console.WriteLine("the invenroy is empty");
+            List<Instrument> matchingInstruments = inventory.Search(instrumentSpec);
+            if(matchingInstruments != null)
+            {
+                foreach (Instrument instrument in matchingInstruments)
                 {
-                    Console.WriteLine($"Erin, you might like this {guitar.Spec.Builder} {guitar.Spec.Model}" +
-                   $" {guitar.Spec.Type} guitar: \n " +
-                   $"{guitar.Spec.BackWood} back and sides \n" +
-                   $"{guitar.Spec.TopWood} top \n" +
-                   $"You can have it for only {guitar.Price}$ ");
-                }   
-            }
-
-            else Console.WriteLine("Sorry, Erin , We have nothing for you");
-
-            
+                    //Enumerate through each instrument in matchingInstrumnet.
+                    Console.WriteLine($"Hello, {name}.\nWe have this {instrument.Spec.Properties["instrumentType"]} with the following specs");
+                    foreach(string propertyKey in instrument.Spec.Properties.Keys)
+                    {
+                        //Enumerate through the Properties Dictionary of each instrument
+                        Console.WriteLine($"{propertyKey.PadRight(20)}{instrument.Spec.Properties[propertyKey]}");
+                    }
+                    Console.WriteLine("\n");
+                }
+            }else
+            Console.WriteLine("we have nothing for you");
+          
         }
     }
 }

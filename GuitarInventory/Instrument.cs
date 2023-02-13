@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuitarInventory
 {
-    internal abstract class Instrument
+    internal class Instrument
     {
         public string SerialNumber { get; set; }
         public double Price { get; set; }

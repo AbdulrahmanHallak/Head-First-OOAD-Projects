@@ -6,48 +6,34 @@ using System.Threading.Tasks;
 
 namespace GuitarInventory
 {
-    internal abstract class InstrumentSpec
+    internal class InstrumentSpec
     {   
-        public Type Type { get; set; }
-        public Wood BackWood { get; set; }
-        public string Model { get; set; }
-        public Wood TopWood { get; set; }
-        public Builder Builder { get; set; }
+        //Made the TValue of type System.Enum to ensure type safety
+        //instead of making it of type Object which is prone to error.
+        public Dictionary<string, System.Enum> Properties { get; set; }
 
-        public InstrumentSpec(Type type, Wood backWood, Wood topWood, Builder builder , string model)
+        public InstrumentSpec(Dictionary<string , System.Enum> properties)
         {
-            Type = type;
-            BackWood = backWood;
-            TopWood = topWood;
-            Builder = builder;
-            Model = model;
+           Properties= properties;
         }
 
-        public virtual bool Compare(InstrumentSpec searchInstrument)
+        public bool Compare(InstrumentSpec searchInstrument)
         {
-            //ignore price because that is unique
-            //ignore serial number because that is unique
-            var builder = searchInstrument.Builder;
-            if (!builder.Equals(Builder))
-                return false;
-
-            var model = searchInstrument.Model.ToLower();
-            if ((model != null) && !model.Equals("") && (!model.Equals(Model.ToLower())))
-                return false;
-
-            var type = searchInstrument.Type;
-            if (!type.Equals(Type))
+            foreach (string propertyKey in searchInstrument.Properties.Keys)
+            {
+                //if the match failed for a single property it returns false
+                //otherwise it keeps going through all the properties and returns true.
+                if (!Properties[propertyKey].Equals(searchInstrument.Properties[propertyKey]))
+                {
                     return false;
-
-            var backWood = searchInstrument.BackWood;
-            if (!backWood.Equals(BackWood))
-                    return false;
-
-            var topWood = searchInstrument.TopWood;
-            if (!topWood.Equals(TopWood))
-                    return false;
-
-                return true;
+                }
+            }
+            return true;
+        }
+        public System.Enum GetProperty(string key)
+        {
+            if(Properties.ContainsKey(key)) return Properties[key];
+            return null;
         }
     }
 }
