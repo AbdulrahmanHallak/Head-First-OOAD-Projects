@@ -30,10 +30,10 @@ namespace GuitarInventory
             }
             return true;
         }
-        public System.Enum GetProperty(string key)
+     /*   public System.Enum GetProperty(string key)
         {
             if(Properties.ContainsKey(key)) return Properties[key];
             return null;
-        }
+        }*/
     }
 }

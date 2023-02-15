@@ -7,13 +7,13 @@ namespace GuitarInventory
         static void Main(string[] args)
         {
             var invetory = new Inventory();
-            //InventoryInitializer.InitializeInventory(invetory);
             TestInstrumentSearch();
         }
-        //A method to test the search method with hard-coded values
         public static void TestInstrumentSearch()
         {
-            // Set up Rick's instrument inventory
+            //A method that initializes the inventory and provides hard coded values to test the search method.
+
+            //Set up Rick's instrument inventory.
             var inventory = new Inventory();
             InventoryInitializer.InitializeInventory(inventory);
 
@@ -50,7 +50,7 @@ namespace GuitarInventory
             var whatSallyLikes = new InstrumentSpec(multiInstrumentSpec);
             FindInstrument("Sally", whatSallyLikes, inventory);
         }
-        //A method that class the search method to test and print out the result.
+        //A method that calls the search method on the provided specification to test is and print out the results.
         //Note: Too lazy to make a specific method for printing out the resutl.
         private static void FindInstrument(string name, InstrumentSpec instrumentSpec, Inventory inventory)
         {
