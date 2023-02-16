@@ -1,5 +1,5 @@
 ﻿namespace GuitarInventory;
-public enum InstrumentType
+internal enum InstrumentType
 {
     Guitar,
     Mandolin,

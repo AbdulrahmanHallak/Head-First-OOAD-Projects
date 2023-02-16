@@ -1,5 +1,5 @@
 ﻿namespace GuitarInventory;
-public enum Style
+internal enum Style
 {
     A,
     Z,

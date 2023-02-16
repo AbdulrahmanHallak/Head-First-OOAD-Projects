@@ -1,6 +1,6 @@
 ﻿namespace GuitarInventory;
 
-public enum Type
+internal enum Type
 {
     Acoustic,
     Electric

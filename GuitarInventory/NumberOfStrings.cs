@@ -1,5 +1,5 @@
 ﻿namespace GuitarInventory;
-public enum NumberOfStrings
+internal enum NumberOfStrings
 {
     six,
     twelve   

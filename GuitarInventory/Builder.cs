@@ -1,5 +1,5 @@
 ﻿namespace GuitarInventory;
-public enum Builder
+internal enum Builder
 {
     Fender,
     Martin,

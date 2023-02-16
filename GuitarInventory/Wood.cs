@@ -1,5 +1,5 @@
 ﻿namespace GuitarInventory;
-public enum Wood
+internal enum Wood
 {
     INDIAN_ROSEWOOD,
     BRAZILIAN_ROSEWOOD,
