@@ -8,19 +8,29 @@ namespace Gary_s_GSF.Board
 {
     internal class Tile
     {
-        public int YCordinate { get; set; }
-        public int XCordinate { get; set;}
+        private List<Unit> units;
+        public int XCoordintae { get; set; }
+        public int YCoordintae { get; set; }
 
-        public Tile(int yCordinate, int xCordinate)
+        public Tile(int xCordinate, int yCordinate)
         {
-            YCordinate = yCordinate;
-            XCordinate = xCordinate;
+             XCoordintae= xCordinate;
+            YCoordintae= yCordinate;
         }
 
-        public void GetUnits() 
-        { 
+        public List<Unit> GetUnits() 
+        {
+            return null;
         }
-        public void SetUnits()
+        public void AddUnit()
+        {
+
+        }
+        public void RemoveUnit()
+        {
+
+        }
+        public void RemoveUnits()
         {
 
         }

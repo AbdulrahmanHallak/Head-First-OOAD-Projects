@@ -1,34 +1,10 @@
 ﻿namespace Gary_s_GSF.Board
 {
-    public class Board
+    internal class Board
     {
-        private int _x;
-        private int _y;
-        private List<Tile> _tiles;
+        private List<List<Tile>> _tiles;
         public int Width { get; set; }
         public int Height { get; set; }
-        public int X 
-        { 
-            get { return _x; }
-            set
-            {
-                // Make sure the X is not negative and does not get out of the board.
-                if((X >= 0) && (X <= Width))
-                    _x = X;
-                throw new IndexOutOfRangeException("The X should not exceed the width"); // Edit this exception
-            }
-        }
-        public int Y
-        {
-            get { return _y; }
-            set
-            {
-                // Make sure the Y is not negative and does not get out of the board.
-                if ((Y >= 0) && (Y <= Height))
-                    _y = Y;
-                throw new IndexOutOfRangeException("The X should not exceed the width"); // Edit this exception
-            }
-        }
 
         public Board(int width , int height)
         {
@@ -39,34 +15,47 @@
 
         private void InitializeTiles()
         {
+            // A list for the X coordinate, where each index reprensent the x
+            // and has a list with all y coordinate associated with the x.
+            _tiles = new List<List<Tile>>(Width);
             for (int x = 0; x <= Width; x++)
             {
+                var ycoordinates = new List<Tile>(Height);
                 for (int y = 0; y <= Height; y++)
-                {
+                { 
                     Tile tile = new Tile(x, y);
-                    _tiles.Add(tile);
+                    ycoordinates.Add(tile); 
                 }
+                _tiles.Add(ycoordinates);
             }
         }
 
         public Tile GetTile(int x, int y)
         {
-            return;
+            return _tiles[x][y];
         }
-        public void AddUnit()
+        public void AddnUnit(Unit unit , int x , int y)
         {
-
+            Tile tile = GetTile(x, y);
+            tile.AddUnit();
         }
-        public void RemoveUnit()
+        public void RemoveUnit(Unit unit , int x , int y)
         {
+            Tile tile = GetTile(x, y);
+            tile.RemoveUnit();
+        }
+        public void RemoveUnits(int x, int y)
+        {
+            Tile tile = GetTile(x, y);
+            tile.RemoveUnits();
+        }
+        public List<Unit> GetUnits(int x, int y)
+        {
+            var tile = GetTile(x, y);
+            return tile.GetUnits();
 
         }
-
         public void MoveUnit()
-        {
-
-        }
-        public void ShowUnits()
         {
 
         }
