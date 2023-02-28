@@ -36,10 +36,10 @@ namespace DogDoor
 
         public static bool operator ==(Bark? left, Bark? right)
         {
-            if(left == null)
+            if(left is null)
             {
                 // null == null = true
-                if(right == null) return true;
+                if(right is null) return true;
 
                 return false;
             }
