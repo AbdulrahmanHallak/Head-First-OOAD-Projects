@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DogDoor
 {
-    internal class Bark
+    internal class Bark : IEquatable<Bark>
     {
         private string _barkSound;
         public Bark(string barkSound)
@@ -15,15 +15,33 @@ namespace DogDoor
             _barkSound = barkSound;
         }
 
-        public bool equals(Bark bark)
+        public override bool Equals(object? obj) => this.Equals(obj as Bark);
+
+        public bool Equals(Bark? other)
         {
-            if(bark.GetBarkSound().ToLower().Equals(_barkSound.ToLower()))
-                return true;
-            return false;
+            if (other is null) return false;
+            if (Object.ReferenceEquals(this, other)) return true;
+            return String.Equals(other._barkSound.ToLower(), _barkSound.ToLower());
         }
+
         public string GetBarkSound()
         {
             return _barkSound;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_barkSound);
+        }
+
+        public static bool operator ==(Bark? left, Bark? right)
+        {
+            return EqualityComparer<Bark>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(Bark? left, Bark? right)
+        {
+            return !(left == right);
         }
     }
 }

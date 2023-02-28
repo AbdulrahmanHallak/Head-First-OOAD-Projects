@@ -1,4 +1,6 @@
-﻿namespace DogDoor
+﻿using System.Net.Security;
+
+namespace DogDoor
 {
     internal class DogDoorSimulator
     {
@@ -14,7 +16,7 @@
             var barkRecognizer = new BarkRecognizer(door);
             var remote = new Remote(door);
 
-            //Simulate the hardware hearing a bark
+            // Simulate the hardware hearing a bark.
             Console.WriteLine("Bruce starts barking");
             barkRecognizer.Recognize(new Bark("rowlf"));
 
@@ -23,14 +25,14 @@
             {
                 Thread.Sleep(5000) ;
             }
-            catch (ThreadInterruptedException e)
+            catch (ThreadInterruptedException)
             {
                 throw;
             }
             Console.WriteLine("Bruce is all done with his business");
             Console.WriteLine("But he is stuck outside");
 
-            //Simulate the hardware hearing a bark (not Bruce)
+            // Simulate the hardware hearing a bark (not Bruce).
             var smallDogBark = new Bark("yip");
             barkRecognizer.Recognize(smallDogBark);
 
@@ -43,10 +45,13 @@
                 throw;
             }
 
-            //Simulate the hardware hearing a bark again
+            // Simulate the hardware hearing a bark again.
             Console.WriteLine("Bruce starts barking again");
             barkRecognizer.Recognize(new Bark("roowlf"));
             Console.Read();
+            string g = "hello";
+            string s = "hellO";
+            Console.WriteLine(String.Equals(g, s));
 
         }
     }

@@ -19,7 +19,7 @@ namespace DogDoor
             Console.WriteLine($"Bark Recognizer heard a {bark.GetBarkSound()} ");
             foreach(var allowedBark in _door.GetAllowedBarks())
             {
-                if (allowedBark.equals(bark))
+                if (allowedBark.Equals(bark))
                 {
                     _door.Open();
                     break;
@@ -29,7 +29,7 @@ namespace DogDoor
         }
         public bool IsOwnersDog(string bark) 
         {
-            return bark.ToLower().Equals(OwnersDogBark.ToLower());
+            return bark.Equals(OwnersDogBark);
         }
     }
 }
