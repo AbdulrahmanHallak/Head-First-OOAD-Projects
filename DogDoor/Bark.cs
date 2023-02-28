@@ -36,12 +36,16 @@ namespace DogDoor
 
         public static bool operator ==(Bark? left, Bark? right)
         {
-            return EqualityComparer<Bark>.Default.Equals(left, right);
+            if(left == null)
+            {
+                // null == null = true
+                if(right == null) return true;
+
+                return false;
+            }
+            return left.Equals(right);
         }
 
-        public static bool operator !=(Bark? left, Bark? right)
-        {
-            return !(left == right);
-        }
+        public static bool operator !=(Bark? left, Bark? right) => !(left == right);
     }
 }
