@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gary_s_GSF.Units
 {
-    internal class UnitGroup
+    public class UnitGroup
     {
         private Dictionary<int, Unit> _units;
 
@@ -31,24 +31,36 @@ namespace Gary_s_GSF.Units
         }
         public Unit GetUnit(int ID)
         {
+            if(!_units.ContainsKey(ID)) 
+                throw new NullReferenceException("these in no unit with the supplied ID");
+
             return _units[ID];
         }
         public void RemoveUnit(int ID)
         {
+            if(!_units.ContainsKey(ID))
+                throw new NullReferenceException("there is no unit with supplied ID");
+
             _units.Remove(ID);
+        }
+        public void RemoveUnit(Unit unit)
+        {
+            if(!_units.ContainsKey(unit.ID))
+                throw new KeyNotFoundException("These is no unit in the group with this ID");
+
+            _units.Remove(unit.ID);
         }
         public List<Unit> GetUnits()
         {
+            if(!_units.Any())
+                throw new NullReferenceException("The group is empty");
+
             var units = new List<Unit>();
-            if(_units is not null)
+            foreach (var unit in _units)
             {
-                foreach(var unit in _units)
-                {
-                    units.Add(unit.Value);
-                }
-                return units; 
+                units.Add(unit.Value);
             }
-            throw new NullReferenceException("You have not created a group");
+            return units;   
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿gusing Gary_s_GSF.Units;
+﻿using Gary_s_GSF.Units;
+using System.Diagnostics;
+
 namespace Tester
 {
+    // Remember to make the classes internal when you finish
     internal class Program
     {
         static void Main(string[] args)
@@ -15,6 +18,14 @@ namespace Tester
             unit1.SetProperty("hitpoints", "24");
             ChangingExistingProperty(unit1);
             SetGetWeapons(unit1);
+
+            var unitlist = new List<Unit>() { new Unit(2) , new Unit(3) , new Unit(8)};
+            NewUnitGroup(unitlist);
+
+            Unit unit2= new Unit(9);
+            AddingUnitsToGroup(unit2);
+
+            RemovingUnits(unit2);
         }
         private static void UnitTypeTest(Unit unit)
         {
@@ -61,5 +72,41 @@ namespace Tester
             Console.WriteLine("Test Passed");
         }
 
+        private static void NewUnitGroup(List<Unit> list)
+        {
+            var group = new UnitGroup(list);
+            var unitgroup = group.GetUnits();
+            foreach(var unit in unitgroup)
+            {
+                Console.WriteLine(unit.ID);
+            }
+        }
+        private static void AddingUnitsToGroup(Unit unit)
+        {
+            var group = new UnitGroup();
+            group.AddUnit(unit);
+            Console.WriteLine(group.GetUnit(unit.ID).ID);
+            Console.WriteLine("Test Passed");
+        }
+        private static void RemovingUnits(Unit unit)
+        {
+            Console.WriteLine("Adding the supplied unit");
+            var group = new UnitGroup();
+            group.AddUnit(unit);
+            Console.WriteLine("Added the unit");
+            Console.WriteLine("Trying to remove the unit");
+            group.RemoveUnit(unit);
+            Console.WriteLine("Removed the Unit");
+            Console.WriteLine("trying to remove a unit that does not exist");
+            try
+            {
+                group.RemoveUnit(unit.ID);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("test passed");
+            }
+            
+        }
     }
 }
