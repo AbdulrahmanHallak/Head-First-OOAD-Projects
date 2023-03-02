@@ -1,4 +1,4 @@
-﻿using Gary_s_GSF.Units;
+﻿gusing Gary_s_GSF.Units;
 namespace Tester
 {
     internal class Program
