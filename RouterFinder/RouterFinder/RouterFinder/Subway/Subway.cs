@@ -34,7 +34,8 @@ namespace RouterFinder.Subway
             if(String.IsNullOrEmpty(stationTwoName)) throw new ArgumentNullException();
             if(String.IsNullOrEmpty(lineName)) throw new ArgumentNullException();
 
-            if ((!HasStation(stationOneName)) || (!HasStation(stationTwoName)))
+            if ((!HasStation(stationOneName)) || (!HasStation(stationTwoName))) 
+                // I do not really know if I should throw an exception lol.
                 Console.WriteLine("there is no stations with these names");
 
             // It is easier to create new object than to iterate through the list to get it.
@@ -58,7 +59,7 @@ namespace RouterFinder.Subway
             var connecntion = new Connection(station1, station2 , lineName);
             return _connections.Contains(connecntion);
         }
-
+        // A test method that is not required by the system.
         public void TestAllSations()
         {
             foreach(Station station in _stations)
