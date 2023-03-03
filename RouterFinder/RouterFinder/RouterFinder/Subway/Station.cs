@@ -23,7 +23,7 @@ namespace RouterFinder.Subway
             return HashCode.Combine(Name.ToLower());
         }
 
-        bool IEquatable<Station>.Equals(Station? other)
+        public bool Equals(Station? other)
         {
             if (other is null) return false;
             if (Object.ReferenceEquals(other, this)) return true;
