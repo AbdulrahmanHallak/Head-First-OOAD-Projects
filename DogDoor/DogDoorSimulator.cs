@@ -49,9 +49,7 @@ namespace DogDoor
             Console.WriteLine("Bruce starts barking again");
             barkRecognizer.Recognize(new Bark("roowlf"));
             Console.Read();
-            string g = "hello";
-            string s = "hellO";
-            Console.WriteLine(String.Equals(g, s));
+           
 
         }
     }

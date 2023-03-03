@@ -31,6 +31,10 @@ namespace RouterFinder.Subway
 
         public void AddConnection(string stationOneName, string stationTwoName)
         {
+            if(String.IsNullOrEmpty(stationOneName)) throw new ArgumentNullException();
+            if(String.IsNullOrEmpty(stationTwoName)) throw new ArgumentNullException();
+
+
 
         }
     }

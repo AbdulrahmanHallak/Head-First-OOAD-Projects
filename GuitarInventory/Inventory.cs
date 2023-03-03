@@ -14,6 +14,7 @@ namespace GuitarInventory
         public Inventory()
         {
             this._inventory = new List<Instrument>();
+           
         }
 
         public void AddInstrument(string serialNumber,double price , InstrumentSpec specs)
