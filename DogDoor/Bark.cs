@@ -31,7 +31,7 @@ namespace DogDoor
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_barkSound);
+            return HashCode.Combine(_barkSound.ToLower());
         }
 
         public static bool operator ==(Bark? left, Bark? right)
