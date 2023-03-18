@@ -7,43 +7,33 @@ using System.Threading.Tasks;
 
 namespace RouterFinder.Subway
 {
-    internal class Station : IEquatable<Station>
+    internal readonly struct Station : IEquatable<Station>
     {
         public Station(string name)
         {
             Name = name;
         }
 
-        public string Name { get; set; }
+        public string Name { get;}
 
-        public override bool Equals(object? obj) => this.Equals(obj as Station);
+        public override bool Equals(object? obj) => obj is Station other && Equals(other);
+
+        public bool Equals(Station other)
+        {
+            return String.Equals(other.Name, Name , StringComparison.OrdinalIgnoreCase);
+        }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name.ToLower());
+            return HashCode.Combine(Name);
         }
 
-        public bool Equals(Station? other)
+        public static bool operator ==(Station left, Station right)
         {
-            if (other is null) return false;
-            if (Object.ReferenceEquals(other, this)) return true;
-            return String.Equals(other.Name.ToLower(), Name.ToLower());
-        }
-
-        public static bool operator ==(Station? left, Station? right)
-        {
-            if(left is null)
-            {
-                // null == null = true.
-                if (right is null)
-                    return true;
-
-                return false;
-            }
             return left.Equals(right);
         }
 
-        public static bool operator !=(Station? left, Station? right)
+        public static bool operator !=(Station left, Station right)
         {
             return !(left == right);
         }
