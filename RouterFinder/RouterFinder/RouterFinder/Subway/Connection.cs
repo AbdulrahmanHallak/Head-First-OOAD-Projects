@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RouterFinder.Subway
 {
-    internal struct Connection
+    internal readonly struct Connection
     {
-        public Station Station1 { get; private set;}
-        public Station Station2 { get; private set;}
-        public string LineName { get; private set;}
+        public Station Station1 { get;}
+        public Station Station2 { get;}
+        public string LineName { get;}
 
         public Connection(Station station1, Station station2, string lineName)
         {
