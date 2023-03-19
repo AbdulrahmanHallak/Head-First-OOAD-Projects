@@ -13,7 +13,7 @@ namespace RouterFinder.Tester
         static void Main(string[] args)
         {
             SubwayLoader loader = new SubwayLoader();
-            Subway.Subway subway = loader.LoadFromFile("C:\\Users\\Abdulrahman\\Desktop\\New Text Document.txt");
+            Subway.Subway subway = loader.LoadFromFile("<FilePath>");
             Console.WriteLine("Testing Stations...");
             if (subway.HasStation("Head First Theater") && subway.HasStation("Choc-O-Holic, Inc.") && subway.HasStation("XHTML Expressway"))
                 Console.WriteLine("Test Passed");
@@ -25,6 +25,7 @@ namespace RouterFinder.Tester
                 Console.WriteLine("Test Passed");
 
             subway.TestAllSations();
+            subway.TestAllConnections();
         }
     }
 }
