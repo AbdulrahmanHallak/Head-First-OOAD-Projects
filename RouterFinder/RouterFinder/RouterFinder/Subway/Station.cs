@@ -37,5 +37,6 @@ namespace RouterFinder.Subway
         {
             return !(left == right);
         }
+        public override string ToString() => Name;
     }
 }
