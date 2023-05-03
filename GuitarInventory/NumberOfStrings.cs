@@ -2,5 +2,5 @@
 internal enum NumberOfStrings
 {
     six,
-    twelve   
+    twelve
 }

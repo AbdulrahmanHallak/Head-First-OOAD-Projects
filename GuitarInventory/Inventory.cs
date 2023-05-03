@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GuitarInventory
+﻿namespace GuitarInventory
 {
     internal class Inventory
     {
@@ -14,7 +7,6 @@ namespace GuitarInventory
         public Inventory()
         {
             this._inventory = new List<Instrument>();
-           
         }
 
         public void AddInstrument(string serialNumber,double price , InstrumentSpec specs)

@@ -9,5 +9,4 @@ internal enum Builder
     Ryan,
     PRS,
     ANY
-
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GuitarInventory
 {
     internal class InstrumentSpec
-    {   
+    {
         // Made the TValue of type System.Enum to ensure type safety
         // instead of making it of type Object which is prone to error.
         // Stored the properties in a Dictionary because they vary
